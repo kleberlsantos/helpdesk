@@ -1,9 +1,8 @@
-package domain.enums;
-
-public enum Prioridade {
-
-   
-    BAIXA(0, "BAIXA"), MEDIA(1,"MEDIA"), ALTA(2,"ALTA");
+package com.kleber.helpdesk.domain.enums;
+ 
+public enum Perfil {
+  
+    ADMIN(0, "ROLE_ADMIN"), CLIENTE(1,"ROLE_CLIENTE"), TECNICO(2,"ROLE_TECNICO");
 
     private Integer codigo;
     private String descricao;
@@ -16,25 +15,22 @@ public enum Prioridade {
         return descricao;
     }
 
-    private  Prioridade(Integer codigo, String descricao) {
+    private  Perfil(Integer codigo, String descricao) {
         this.codigo = codigo;
         this.descricao = descricao;        
     }
 
-    public static Prioridade toEnum(Integer cod) {
+    public static Perfil toEnum(Integer cod) {
         if(cod==null){
             return null;
         }
-        for (Prioridade x : Prioridade.values()) {
+        for (Perfil x : Perfil.values()) {
             if (cod.equals(x.getCodigo())) {
                 return x;
             }
         }
-        throw new IllegalArgumentException("Prioridade inválido!");
+        throw new IllegalArgumentException("Perfil inválido!");
     }
-
-    
-
-    
-
+   
 }
+

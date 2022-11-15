@@ -1,20 +1,45 @@
-package domain;
+package com.kleber.helpdesk.domain;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 
-import ch.qos.logback.core.status.Status;
-import domain.enums.Prioridade;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
-public class Chamado {
+import com.fasterxml.jackson.annotation.JsonFormat;
+
+import ch.qos.logback.core.status.Status;
+import com.kleber.helpdesk.domain.enums.Prioridade;
+
+@Entity
+public class Chamado implements Serializable {
+    private static final long serialVersionUID = 1L;
+    
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+
+    @JsonFormat(pattern = "dd/MM/yyyy")
     private LocalDate dataAbertura = LocalDate.now();
+    
+    @JsonFormat(pattern = "dd/MM/yyyy")
     private LocalDate dataFechamento;
+    
     private Prioridade prioridade;
     private Status status;
     private String titulo;
     private String observacoes;
 
+    @ManyToOne
+    @JoinColumn(name = "cliente_id")
     private Cliente cliente;
+    
+    @ManyToOne
+    @JoinColumn(name = "tecnico_id")
     private Tecnico tecnico;
 
     public Chamado() {

@@ -1,4 +1,4 @@
-package domain.enums;
+package com.kleber.helpdesk.domain.enums;
 
 public enum Status {
 
