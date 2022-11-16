@@ -12,8 +12,8 @@ import javax.persistence.ManyToOne;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
-import ch.qos.logback.core.status.Status;
 import com.kleber.helpdesk.domain.enums.Prioridade;
+import com.kleber.helpdesk.domain.enums.Status;
 
 @Entity
 public class Chamado implements Serializable {
