@@ -24,7 +24,7 @@ import com.kleber.helpdesk.services.ClienteService;
 
 
 @RestController
-@RequestMapping(value ="/Cliente")
+@RequestMapping(value ="/cliente")
 public class ClienteResource {
 
     @Autowired
