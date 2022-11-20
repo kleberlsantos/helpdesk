@@ -42,12 +42,8 @@ public class ClienteDTO implements Serializable {
     }
 
     public ClienteDTO() {
-        super();        
+        super();
         addPerfis(Perfil.CLIENTE);
-    }
-
-    public static long getSerialversionuid() {
-        return serialVersionUID;
     }
 
     public Integer getId() {

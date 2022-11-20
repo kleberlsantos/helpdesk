@@ -18,17 +18,17 @@ import com.kleber.helpdesk.domain.enums.Status;
 @Entity
 public class Chamado implements Serializable {
     private static final long serialVersionUID = 1L;
-    
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
     @JsonFormat(pattern = "dd/MM/yyyy")
     private LocalDate dataAbertura = LocalDate.now();
-    
+
     @JsonFormat(pattern = "dd/MM/yyyy")
     private LocalDate dataFechamento;
-    
+
     private Prioridade prioridade;
     private Status status;
     private String titulo;
@@ -37,7 +37,7 @@ public class Chamado implements Serializable {
     @ManyToOne
     @JoinColumn(name = "cliente_id")
     private Cliente cliente;
-    
+
     @ManyToOne
     @JoinColumn(name = "tecnico_id")
     private Tecnico tecnico;
@@ -46,8 +46,8 @@ public class Chamado implements Serializable {
         super();
     }
 
-    public Chamado(Integer id, Prioridade prioridade, Status status, String titulo, String observacoes, Tecnico tecnico,Cliente cliente
-            ) {
+    public Chamado(Integer id, Prioridade prioridade, Status status, String titulo, String observacoes, Tecnico tecnico,
+            Cliente cliente) {
         super();
         this.id = id;
         this.prioridade = prioridade;
@@ -154,8 +154,5 @@ public class Chamado implements Serializable {
             return false;
         return true;
     }
-
-    
-
 
 }

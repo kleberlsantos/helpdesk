@@ -2,12 +2,11 @@ package com.kleber.helpdesk.domain.enums;
 
 public enum Status {
 
-   
-    ABERTO(0, "ABERTO"), ANDAMENTO(1,"ANDAMENTO"), ENCERRADO(2,"ENCERRADO");
+    ABERTO(0, "ABERTO"), ANDAMENTO(1, "ANDAMENTO"), ENCERRADO(2, "ENCERRADO");
 
     private Integer codigo;
     private String descricao;
-    
+
     public Integer getCodigo() {
         return codigo;
     }
@@ -16,13 +15,13 @@ public enum Status {
         return descricao;
     }
 
-    private  Status(Integer codigo, String descricao) {
+    private Status(Integer codigo, String descricao) {
         this.codigo = codigo;
-        this.descricao = descricao;        
+        this.descricao = descricao;
     }
 
     public static Status toEnum(Integer cod) {
-        if(cod==null){
+        if (cod == null) {
             return null;
         }
         for (Status x : Status.values()) {
@@ -32,9 +31,5 @@ public enum Status {
         }
         throw new IllegalArgumentException("Status inválido!");
     }
-
-    
-
-    
 
 }

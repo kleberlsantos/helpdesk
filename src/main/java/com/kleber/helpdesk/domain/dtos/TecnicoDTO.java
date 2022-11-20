@@ -46,10 +46,6 @@ public class TecnicoDTO implements Serializable {
         addPerfis(Perfil.TECNICO);
     }
 
-    public static long getSerialversionuid() {
-        return serialVersionUID;
-    }
-
     public Integer getId() {
         return id;
     }

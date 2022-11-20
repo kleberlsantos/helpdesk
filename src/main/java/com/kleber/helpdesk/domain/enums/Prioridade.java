@@ -2,12 +2,11 @@ package com.kleber.helpdesk.domain.enums;
 
 public enum Prioridade {
 
-   
-    BAIXA(0, "BAIXA"), MEDIA(1,"MEDIA"), ALTA(2,"ALTA");
+    BAIXA(0, "BAIXA"), MEDIA(1, "MEDIA"), ALTA(2, "ALTA");
 
     private Integer codigo;
     private String descricao;
-    
+
     public Integer getCodigo() {
         return codigo;
     }
@@ -16,13 +15,13 @@ public enum Prioridade {
         return descricao;
     }
 
-    private  Prioridade(Integer codigo, String descricao) {
+    private Prioridade(Integer codigo, String descricao) {
         this.codigo = codigo;
-        this.descricao = descricao;        
+        this.descricao = descricao;
     }
 
     public static Prioridade toEnum(Integer cod) {
-        if(cod==null){
+        if (cod == null) {
             return null;
         }
         for (Prioridade x : Prioridade.values()) {
@@ -32,9 +31,5 @@ public enum Prioridade {
         }
         throw new IllegalArgumentException("Prioridade inválido!");
     }
-
-    
-
-    
 
 }

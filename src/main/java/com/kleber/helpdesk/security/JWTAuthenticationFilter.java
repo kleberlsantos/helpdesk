@@ -9,10 +9,8 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.springframework.context.annotation.Bean;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
@@ -25,16 +23,17 @@ public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilte
     private JWTUtil jwtUtil;
 
     public JWTAuthenticationFilter(AuthenticationManager authenticationManager, JWTUtil jwtUtil) {
+        super();
         this.authenticationManager = authenticationManager;
         this.jwtUtil = jwtUtil;
     }
-/* 
-    @Bean
-    public AuthenticationManager authenticationManager(
-            AuthenticationConfiguration authConfig) throws Exception {
-        return authConfig.getAuthenticationManager();
-    }
-    */
+    /*
+     * @Bean
+     * public AuthenticationManager authenticationManager(
+     * AuthenticationConfiguration authConfig) throws Exception {
+     * return authConfig.getAuthenticationManager();
+     * }
+     */
 
     @Override
     public Authentication attemptAuthentication(HttpServletRequest request, HttpServletResponse response)
@@ -70,7 +69,7 @@ public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilte
     private CharSequence json() {
         long date = new Date().getTime();
         return "{"
-                + "\"timesatmp\": " + date + ", "
+                + "\"timestamp\": " + date + ", "
                 + "\"status\": 401, "
                 + "\"error\": \"Não autorizado\", "
                 + "\"message\": \"Email ou senha inválidos\", "

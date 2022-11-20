@@ -46,10 +46,13 @@ public class ClienteService {
     }
 
     public Cliente update(Integer id, @Valid ClienteDTO objDTO) {
-        objDTO.setId(id);        
-        //objDTO.setSenha(encoder.encode(objDTO.getSenha()));
+        objDTO.setId(id);
         Cliente oldObj = findById(id);
-        validaPorCpfEEmail(objDTO);
+
+		if (!objDTO.getSenha().equals(oldObj.getSenha()))
+			objDTO.setSenha(encoder.encode(objDTO.getSenha()));
+
+		validaPorCpfEEmail(objDTO);
         oldObj = new Cliente(objDTO);
         return repository.save(oldObj);
     }
@@ -65,7 +68,7 @@ public class ClienteService {
     private void validaPorCpfEEmail(ClienteDTO objDTO) {
         Optional<Pessoa> obj = pessoaRepository.findByCpf(objDTO.getCpf());
         if (obj.isPresent() && obj.get().getId() != objDTO.getId()) {
-            throw new DataIntegrityViolationException("CPF já cadastrada no sistema!");
+            throw new DataIntegrityViolationException("CPF já cadastrado no sistema!");
         }
 
         obj = pessoaRepository.findByEmail(objDTO.getEmail());

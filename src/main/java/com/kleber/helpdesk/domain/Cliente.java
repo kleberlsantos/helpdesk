@@ -13,9 +13,9 @@ import com.kleber.helpdesk.domain.enums.Perfil;
 
 @Entity
 public class Cliente extends Pessoa {
-    private static final long serialVersionUID = 1L; 
+    private static final long serialVersionUID = 1L;
 
-    @JsonIgnore //para resolver o problema de vir dados do chamado evitando loops redudantes
+    @JsonIgnore // para resolver o problema de vir dados do chamado evitando loops redudantes
     @OneToMany(mappedBy = "cliente")
     private List<Chamado> chamados = new ArrayList<>();
 
@@ -30,6 +30,7 @@ public class Cliente extends Pessoa {
     }
 
     public Cliente(ClienteDTO obj) {
+        super();
         this.id = obj.getId();
         this.nome = obj.getNome();
         this.cpf = obj.getCpf();
@@ -46,5 +47,5 @@ public class Cliente extends Pessoa {
     public void setChamados(List<Chamado> chamados) {
         this.chamados = chamados;
     }
-    
+
 }
